@@ -1,8 +1,11 @@
+import React, {Fragment} from 'react'
+import {Redirect, Route} from 'react-router-dom'
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      fakeAuth.isAuthenticated ? (
+      true? (
         <Component {...props} />
       ) : (
         <Redirect
