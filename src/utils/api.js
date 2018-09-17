@@ -24,3 +24,7 @@ export function saveQuestionAnswer(authedUser, qid, answer) {
         }
     )
 }
+
+export function addUser(user) {
+    return _saveNewUser(user)
+}
