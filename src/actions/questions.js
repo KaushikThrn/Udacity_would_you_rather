@@ -1,4 +1,3 @@
-import {hideLoading, showLoading} from 'react-redux-loading'
 import {ADD_QUESTION, RECEIVE_QUESTIONS} from "./types";
 import {saveQuestion, saveQuestionAnswer} from "../utils/api"
 import {handleInitialData} from "./shared";
@@ -22,7 +21,6 @@ export function addQuestion(question) {
 export function handleAddQuestion(optionOneText, optionTwoText) {
     return (dispatch, getState) => {
         const {authedUser} = getState()
-        dispatch(showLoading())
         return saveQuestion({
             optionOneText,
             optionTwoText,
@@ -30,7 +28,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         })
             .then(() => {
                 dispatch(handleInitialData())
-                dispatch(hideLoading())
             })
     }
 }
@@ -38,11 +35,9 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 export function handleAnswerQuestion(qid, answer) {
     return (dispatch, getState) => {
         const {authedUser} = getState()
-        dispatch(showLoading())
         return saveQuestionAnswer(authedUser, qid, answer)
             .then(() => {
                 dispatch(handleInitialData())
-                dispatch(hideLoading())
             })
     }
 

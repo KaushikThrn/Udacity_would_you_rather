@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Protected extends Component {
   render() {
     return (
-      <div >
+      <div>
        <div>Protected</div>
       </div>
     );

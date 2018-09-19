@@ -1,31 +1,75 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import setAuthedUser from '../actions/authed.js'
-
-
-
-const mapDispatchtoProps=(dispatch)=>{
-   return {
-    login:()=>{
-        dispatch(setAuthedUser(true))
-    }
-   } 
-}
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Button, Form, FormGroup, Label} from 'reactstrap'
+import {authenticateUser} from "../actions/authedUser"
+import {Link, Redirect} from 'react-router-dom'
 
 class Login extends Component {
-  render() {
-    return (
-      <div>
-      	<button onClick={this.props.login}>Log in</button>
-      </div>
-    )
-  }
+    state = {
+        username: '',
+        isLogged: false
+    }
+    //submit the authenticated user
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const {username} = this.state
+        const {dispatch} = this.props
+
+        if (username !== "") {
+            dispatch(authenticateUser(username))
+            this.setState(() => ({isLogged: true}))
+        }
+    }
+    //update the state based on values entered
+    handleChange = (e) => {
+        const username = e.target.value
+        this.setState(() => ({username}))
+    }
+
+    render() {
+        const {from} = this.props.location.state || {from: {pathname: '/'}}
+
+        const {isLogged} = this.state
+
+        if (isLogged) {
+            return <Redirect to={from}/>
+        }
+
+
+        return (
+            <Form onSubmit={this.handleSubmit} className="form-signin">
+                <h2 className="form-heading">Please sign in</h2>
+                <FormGroup>
+                    <Label htmlFor="username" className="sr-name">User</Label>
+
+                    <select id="username" className="form-control"
+                            value={this.state.username}
+                            onChange={this.handleChange}>
+                        <option value='' disabled>Select</option>
+                        {this.props.users.map((user) => (
+                                <option key={user.id} value={user.id}>{user.name}</option>
+                            )
+                        )}
+                    </select>
+
+                </FormGroup>
+                <Button type="submit" id="_submit" name="_submit"
+                        className="btn btn-lg btn-primary btn-block">Login</Button>
+            </Form>
+        )
+    }
 }
 
-function mapStateToProps (state) {
-  return {
-    authed: state.authed
-  }
+function mapStateToProps({users, authedUser}) {
+    return {
+        users: Object.values(users).map((user) => {
+            return ({
+                id: user.id,
+                name: user.name
+            })
+        }),
+        username: authedUser
+    }
 }
 
-export default connect(mapStateToProps,mapDispatchtoProps)(Login)
+export default connect(mapStateToProps)(Login)

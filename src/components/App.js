@@ -4,10 +4,15 @@ import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import Question from './Question'
 import Protected from './Protected'
+import {handleInitialData} from "../actions/shared"
+import { connect } from 'react-redux'
 
 
 class App extends Component {
 
+componentDidMount() {
+        this.props.dispatch(handleInitialData())
+    }
 
     render() {
         return (
@@ -16,14 +21,8 @@ class App extends Component {
                      <div>
                  <ul>
                      <li>
-                          <Link to="/login">Login</Link>
-                          </li>
-                          <li>
-                            <Link to="/questions/:question_id">Question</Link>
-                          </li>
-                          <li>
-                            <Link to="/protected">Protected</Link>
-                          </li>
+                        {console.log("the state in app.js is",this.props.state)}
+                          <Link to="/login">Login</Link></li>
                         </ul>
                         <Route path="/login" component={Login}/>
                         <Route path="/questions/:question_id" component={Question}/>
@@ -35,6 +34,11 @@ class App extends Component {
     }
 }
 
+function mapStateToProps (state) {
+  return {
+    state: state
+  }
+}
 
 
-export default App;
+export default connect(mapStateToProps)(App);
