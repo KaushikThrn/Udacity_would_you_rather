@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 class Question extends Component {
   render() {
     return (
-      <div className="App">
-       <div>{this.props.authed?<div>true</div>:<div>false</div>}</div>
+      <div>
+       {this.props.question==null?<div>Loading</div>:<div>
+       {this.props.question.optionOne["text"]} or {this.props.question.optionTwo["text"]}
+       </div>}
       </div>
     );
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps ({questions},props) {
   return {
-    authed: state.authed
+    question: questions[props.match.params.question_id]
   }
 }
 
