@@ -5,70 +5,52 @@ import {authenticateUser} from "../actions/authedUser"
 import {Link, Redirect} from 'react-router-dom'
 
 class Login extends Component {
-    state = {
-        username: '',
-        isLogged: false
-    }
-    //submit the authenticated user
-    handleSubmit = (e) => {
-        e.preventDefault()
-        const {username} = this.state
-        const {dispatch} = this.props
-
-        if (username !== "") {
-            dispatch(authenticateUser(username))
-            this.setState(() => ({isLogged: true}))
-        }
-    }
-    //update the state based on values entered
-    handleChange = (e) => {
-        const username = e.target.value
-        this.setState(() => ({username}))
+    state={
+        value:""
     }
 
-    render() {
-        const {from} = this.props.location.state || {from: {pathname: '/'}}
+  handleChange=(event)=> {
+    this.setState({value: event.target.value});
+  }
 
-        const {isLogged} = this.state
+  handleSubmit=(event)=> {
+    event.preventDefault();
+    this.props.dispatch(authenticateUser(this.state.value));
 
-        if (isLogged) {
-            return <Redirect to={from}/>
-        }
+  }
 
 
-        return (
-            <Form onSubmit={this.handleSubmit} className="form-signin">
-                <h2 className="form-heading">Please sign in</h2>
-                <FormGroup>
-                    <Label htmlFor="username" className="sr-name">User</Label>
-
-                    <select id="username" className="form-control"
-                            value={this.state.username}
-                            onChange={this.handleChange}>
-                        <option value='' disabled>Select</option>
-                        {this.props.users.map((user) => (
-                                <option key={user.id} value={user.id}>{user.name}</option>
-                            )
-                        )}
-                    </select>
-
-                </FormGroup>
-                <Button type="submit" id="_submit" name="_submit"
-                        className="btn btn-lg btn-primary btn-block">Login</Button>
-            </Form>
-        )
+    render(){
+        return(
+        <div>
+        <form onSubmit={this.handleSubmit}>
+        <label>
+          Select the user name:
+          <select value={this.state.value} onChange={this.handleChange}>
+          {
+            this.props.users.map((user)=>(
+                <option key={user.id} value={user.id}>{user.name}</option>
+                ))
+          }
+          </select>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      <div>{this.props.username.length===0?"no user":this.props.username[0]}</div>
+      </div>
+            )
     }
 }
 
-function mapStateToProps({users, authedUser}) {
+function mapStateToProps(state) {
     return {
-        users: Object.values(users).map((user) => {
+        users: Object.values(state.users).map((user) => {
             return ({
                 id: user.id,
                 name: user.name
             })
         }),
-        username: authedUser
+        username: state.authedUser
     }
 }
 

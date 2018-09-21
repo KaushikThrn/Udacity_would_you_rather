@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import Question from './Question'
+import Dashboard from './Dashboard'
 import Protected from './Protected'
 import {handleInitialData} from "../actions/shared"
 import { connect } from 'react-redux'
@@ -23,9 +24,11 @@ componentDidMount() {
                      <li>
                         {console.log("the state in app.js is",this.props.state)}
                           <Link to="/login">Login</Link></li>
+                           <li><Link to="/Dashboard">Dashboard</Link></li>
                         </ul>
                         <Route path="/login" component={Login}/>
                         <Route path="/questions/:question_id" component={Question}/>
+                        <Route path="/Dashboard" component={Dashboard}/>
                         <PrivateRoute path="/protected" component={Protected}/>
                         </div>
                 </Fragment>
