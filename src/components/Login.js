@@ -27,6 +27,7 @@ class Login extends Component {
         <label>
           Select the user name:
           <select value={this.state.value} onChange={this.handleChange}>
+             <option value='' disabled>Select</option>
           {
             this.props.users.map((user)=>(
                 <option key={user.id} value={user.id}>{user.name}</option>
