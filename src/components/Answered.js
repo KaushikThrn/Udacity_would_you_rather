@@ -10,7 +10,11 @@ class Answered extends Component {
         return(
             <div>
                 <ul>{
-                    this.props.answered.map((question)=>(<li key={question.id}>{question.optionOne["text"]} or {question.optionTwo["text"]}</li>))
+                this.props.answered.map((question)=>(<li key={question.id}>
+                        <Link to={{pathname:`/Question/${question.id}`,state:{answered:true}}}>
+                        {question.optionOne["text"]} or {question.optionTwo["text"]}
+                        </Link>
+                        </li>))
                 }
                    
                 </ul>
