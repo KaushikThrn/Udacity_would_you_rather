@@ -20,7 +20,7 @@ export function addQuestion(question) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
     return (dispatch, getState) => {
-        const {authedUser} = getState()
+        const authedUser = getState().authedUser[0]
         return saveQuestion({
             optionOneText,
             optionTwoText,
