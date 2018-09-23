@@ -6,7 +6,10 @@ class Question extends Component {
   render() {
     return (
       <div>
-       {this.props.question==null?<div>Loading</div>:<div>
+       {this.props.question==null?<div>Loading</div>:
+        <div>
+        <div>Asked by {this.props.question.author}</div>
+        <img src={this.props.userImg} />
        {this.props.question.optionOne["text"]} or {this.props.question.optionTwo["text"]}
        </div>}
       </div>
@@ -14,9 +17,10 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps ({questions},props) {
+function mapStateToProps (state,props) {
   return {
-    question: questions[props.match.params.question_id]
+    question: state.questions[props.match.params.question_id],
+    userImg:state.users[state.questions[props.match.params.question_id]["author"]]["avatarURL"]
   }
 }
 
