@@ -8,6 +8,7 @@ import Answered from './Answered'
 import Dashboard from './Dashboard'
 import LeaderBoard from './LeaderBoard'
 import Protected from './Protected'
+import AddQuestion from './AddQuestion'
 import {handleInitialData} from "../actions/shared"
 import { connect } from 'react-redux'
 
@@ -31,6 +32,7 @@ componentDidMount() {
                            <li><Link to="/Unanswered">Unanswered</Link></li>
                            <li><Link to="/Answered">Answered</Link></li>
                            <li><Link to="/LeaderBoard">LeaderBoard</Link></li>
+                           <li><Link to="/AddQuestion">AddQuestion</Link></li>
                         </ul>
                         <Route path="/login" component={Login}/>
                         <Route path="/Question/:question_id" component={Question}/>
@@ -38,6 +40,7 @@ componentDidMount() {
                         <Route path="/Unanswered" component={Unanswered}/>
                         <Route path="/Answered" component={Answered}/>
                         <Route path="/LeaderBoard" component={LeaderBoard}/>
+                        <Route path="/AddQuestion" component={AddQuestion}/>
                         <PrivateRoute path="/protected" component={Protected}/>
                         </div>
                 </Fragment>
