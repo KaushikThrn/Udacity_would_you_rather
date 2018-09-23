@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label} from 'reactstrap'
-import {authenticateUser} from "../actions/authedUser"
+import {authenticateUser,signOut} from "../actions/authedUser"
 import {Link, Redirect} from 'react-router-dom'
 
 class Login extends Component {
@@ -16,6 +16,12 @@ class Login extends Component {
   handleSubmit=(event)=> {
     event.preventDefault();
     this.props.dispatch(authenticateUser(this.state.value));
+
+  }
+
+   handleSignOut=(event)=> {
+    event.preventDefault();
+    this.props.dispatch(signOut());
 
   }
 
@@ -37,6 +43,7 @@ class Login extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <Button onClick={this.handleSignOut}>SignOut</Button>
       <div>{this.props.username.length===0?"no user":this.props.username[0]}</div>
       </div>
             )

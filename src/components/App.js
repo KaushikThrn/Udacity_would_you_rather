@@ -32,15 +32,16 @@ componentDidMount() {
                            <li><Link to="/Unanswered">Unanswered</Link></li>
                            <li><Link to="/Answered">Answered</Link></li>
                            <li><Link to="/LeaderBoard">LeaderBoard</Link></li>
-                           <li><Link to="/AddQuestion">AddQuestion</Link></li>
+                           <li><Link to="/add">AddQuestion</Link></li>
+                            <li><Link to="/protected">Protected</Link></li>
                         </ul>
                         <Route path="/login" component={Login}/>
-                        <Route path="/Question/:question_id" component={Question}/>
-                        <Route path="/Dashboard" component={Dashboard}/>
-                        <Route path="/Unanswered" component={Unanswered}/>
-                        <Route path="/Answered" component={Answered}/>
-                        <Route path="/LeaderBoard" component={LeaderBoard}/>
-                        <Route path="/AddQuestion" component={AddQuestion}/>
+                        <PrivateRoute path="/Question/:question_id" component={Question}/>
+                        <PrivateRoute path="/Dashboard" component={Dashboard}/>
+                        <PrivateRoute path="/Unanswered" component={Unanswered}/>
+                        <PrivateRoute path="/Answered" component={Answered}/>
+                        <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
+                        <PrivateRoute path="/add" component={AddQuestion}/>
                         <PrivateRoute path="/protected" component={Protected}/>
                         </div>
                 </Fragment>

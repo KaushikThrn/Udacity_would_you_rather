@@ -25,6 +25,7 @@ class AddQuestion extends Component {
    render(){
         return(
         <div>
+        <h2>Would You Rather</h2>
         <form onSubmit={this.handleSubmit}>
         <label>Option One
         <input type="text" value={this.state.optionOne} onChange={(event)=>{this.updateState("optionOne",event.target.value)}}/>

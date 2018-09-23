@@ -21,8 +21,8 @@ class Poll extends Component {
 
         return(
             <div>{
-                this.props.answered?<div><span>{this.props.question.optionOne["text"]} with {optionOneVotes/total*100}% </span>
-                <span>{this.props.question.optionTwo["text"]} with {optionTwoVotes/total*100}%</span></div>
+                this.props.answered?<div><span>{this.props.question.optionOne["text"]} with Number of Votes={optionOneVotes} ({optionOneVotes/total*100}%) </span>
+                <span>{this.props.question.optionTwo["text"]} with Number of Votes={optionTwoVotes} ({optionTwoVotes/total*100}%)</span></div>
                 :<div><a href="" onClick={(event)=>this.answerQuestion(event,"optionOne")}>{this.props.question.optionOne["text"]} </a>
                  <a href="" onClick={(event)=>this.answerQuestion(event,"optionTwo")}>{this.props.question.optionTwo["text"]}</a></div>
             }</div>

@@ -9,6 +9,7 @@ class Question extends Component {
       <div>
        {this.props.question==null?<div>Loading</div>:
               <div>
+              <h2>Would You Rather</h2>
               <div>Asked by {this.props.question.author}</div>
               <img src={this.props.userImg} />
              <span>{this.props.question.optionOne["text"]}</span> or <span>{this.props.question.optionTwo["text"]}</span>

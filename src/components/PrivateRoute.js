@@ -10,7 +10,7 @@ const PrivateRoute = ({ component: Component,authed, ...rest }) => (
   <Route {...rest} render={(props) => {
     console.log("wtf")
     return(
-    authed
+    authed.length>0
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/login',
@@ -21,7 +21,7 @@ const PrivateRoute = ({ component: Component,authed, ...rest }) => (
 
 function mapStateToProps (state) {
   return {
-    authed: state.authed
+    authed: state.authedUser
   }
 }
 
