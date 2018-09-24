@@ -10,9 +10,10 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem ,Button} from 'reactstrap';
   import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
   import { connect } from 'react-redux'
+  import {signOut} from "../actions/authedUser"
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -28,6 +29,12 @@ class Navigation extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  signout=(event)=> {
+    event.preventDefault();
+    this.props.dispatch(signOut());
+
+  }
   render() {
     return (
       <div>
@@ -37,19 +44,22 @@ class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-               <Link to="/Dashboard">Dashboard</Link>
+               <Link to="/Dashboard">Dashboard </Link>
               </NavItem>
               <NavItem>
-               <Link to="/Unanswered">Unanswered</Link>
+               <Link to="/Unanswered">Unanswered </Link>
               </NavItem>
               <NavItem>
-               <Link to="/Answered">Answered</Link>
+               <Link to="/Answered">Answered </Link>
               </NavItem>
               <NavItem>
-               <Link to="/LeaderBoard">LeaderBoard</Link>
+               <Link to="/LeaderBoard">LeaderBoard </Link>
               </NavItem>
               <NavItem>
-               <Link to="/add">AddQuestion</Link>
+               <Link to="/add">Add Question</Link>
+              </NavItem>
+              <NavItem>
+               <a href="#" onClick={this.signout}>Sign Out</a>
               </NavItem>
             </Nav>
           </Collapse>

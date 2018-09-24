@@ -8,7 +8,8 @@ import {handleAddQuestion} from "../actions/questions"
 class AddQuestion extends Component {
 	state={
 		optionOne:"",
-		optionTwo:""
+		optionTwo:"",
+		redirect:false
 	}
 
 	updateState=(key,value)=>{
@@ -18,11 +19,18 @@ class AddQuestion extends Component {
 
     handleSubmit=(event)=>{
     event.preventDefault();
-    this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
+    if(this.state.optionOne!=="" && this.state.optionTwo!==""){
+	    this.props.dispatch(handleAddQuestion(this.state.optionOne, this.state.optionTwo))
+		this.setState({redirect: true })
+	}
+
 
   }
 
    render(){
+	   	if (this.state.redirect) {
+	            return <Redirect to='/Unanswered'/>
+	        }
         return(
         <div>
         <h2>Would You Rather</h2>

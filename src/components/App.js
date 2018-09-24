@@ -24,7 +24,6 @@ componentDidMount() {
     render() {
         return (
             <Router>
-                <Fragment>
                      <div>
                      <Navigation />
                         <Route path="/login" component={Login}/>
@@ -34,9 +33,7 @@ componentDidMount() {
                         <PrivateRoute path="/Answered" component={Answered}/>
                         <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
                         <PrivateRoute path="/add" component={AddQuestion}/>
-                        <PrivateRoute path="/protected" component={Protected}/>
                         </div>
-                </Fragment>
             </Router>
         );
     }

@@ -6,7 +6,8 @@ import {Link, Redirect} from 'react-router-dom'
 
 class Login extends Component {
     state={
-        value:""
+        value:"",
+        redirect: false
     }
 
   handleChange=(event)=> {
@@ -16,17 +17,25 @@ class Login extends Component {
   handleSubmit=(event)=> {
     event.preventDefault();
     this.props.dispatch(authenticateUser(this.state.value));
+    if(this.state.value!==""){
+      this.setState({redirect: true })
+    }
+    }
 
-  }
 
    handleSignOut=(event)=> {
     event.preventDefault();
     this.props.dispatch(signOut());
 
   }
-
+  
 
     render(){
+
+        if (this.state.redirect) {
+            return <Redirect to='/Unanswered'/>
+        }
+
         return(
         <div>
         <form onSubmit={this.handleSubmit}>

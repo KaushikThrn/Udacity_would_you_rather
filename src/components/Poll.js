@@ -8,13 +8,20 @@ import {handleAnswerQuestion} from '../actions/questions'
 
 class Poll extends Component {
 
+    state={
+        redirect:false
+    }
     answerQuestion=(e,option)=>{
         e.preventDefault();
-        console.log("clicked on",option)
         this.props.dispatch(handleAnswerQuestion(this.props.question.id, option))
+        this.setState({redirect: true })
     }
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect to='/Unanswered'/>
+        }
+
         const optionOneVotes=this.props.question.optionOne["votes"].length
         const optionTwoVotes=this.props.question.optionTwo["votes"].length
         const total=optionOneVotes+optionTwoVotes
