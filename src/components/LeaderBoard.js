@@ -7,8 +7,6 @@ import {Link, Redirect} from 'react-router-dom'
 class LeaderBoard extends Component {
 
     render(){
-        console.log("LeaderBoard",this.props.users)
-        console.log("LeaderBoard",this.props.sortedUsers)
         return(
             <div>
             <div>LeaderBoard</div>
@@ -16,7 +14,7 @@ class LeaderBoard extends Component {
             {this.props.users==null?<div>Loading</div>:
             <div>
                 {this.props.sortedUsers.map((user)=>(
-                <div>
+                <div key={user}>
                 <span>{this.props.users[user]["name"]}</span>
                 <img src={this.props.users[user].avatarURL} />
                 <span>Asked:{this.props.users[user].questions.length} Answered:{Object.keys(this.props.users[user].answers).length}</span>

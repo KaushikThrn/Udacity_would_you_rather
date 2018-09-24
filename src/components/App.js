@@ -9,8 +9,10 @@ import Dashboard from './Dashboard'
 import LeaderBoard from './LeaderBoard'
 import Protected from './Protected'
 import AddQuestion from './AddQuestion'
+import Navigation from "./Navigation"
 import {handleInitialData} from "../actions/shared"
 import { connect } from 'react-redux'
+
 
 
 class App extends Component {
@@ -24,17 +26,7 @@ componentDidMount() {
             <Router>
                 <Fragment>
                      <div>
-                 <ul>
-                     <li>
-                        {console.log("the state in app.js is",this.props.state)}
-                          <Link to="/login">Login</Link></li>
-                           <li><Link to="/Dashboard">Dashboard</Link></li>
-                           <li><Link to="/Unanswered">Unanswered</Link></li>
-                           <li><Link to="/Answered">Answered</Link></li>
-                           <li><Link to="/LeaderBoard">LeaderBoard</Link></li>
-                           <li><Link to="/add">AddQuestion</Link></li>
-                            <li><Link to="/protected">Protected</Link></li>
-                        </ul>
+                     <Navigation />
                         <Route path="/login" component={Login}/>
                         <PrivateRoute path="/Question/:question_id" component={Question}/>
                         <PrivateRoute path="/Dashboard" component={Dashboard}/>
