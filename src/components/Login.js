@@ -33,7 +33,7 @@ class Login extends Component {
     render(){
 
         if (this.state.redirect) {
-            return <Redirect to='/Unanswered'/>
+            return <Redirect to='/Dashboard/Unanswered'/>
         }
 
         return(
@@ -50,10 +50,9 @@ class Login extends Component {
           }
           </select>
         </label>
-        <input type="submit" value="Submit" />
+        <input style={{marginLeft:'5px'}}type="submit" value="Submit" />
       </form>
       <Button onClick={this.handleSignOut}>SignOut</Button>
-      <div>{this.props.username.length===0?"no user":this.props.username[0]}</div>
       </div>
             )
     }

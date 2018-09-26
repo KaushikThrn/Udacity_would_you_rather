@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import Question from './Question'
@@ -12,6 +12,7 @@ import AddQuestion from './AddQuestion'
 import Navigation from "./Navigation"
 import {handleInitialData} from "../actions/shared"
 import { connect } from 'react-redux'
+import Nomatch from './Nomatch'
 
 
 
@@ -29,8 +30,8 @@ componentDidMount() {
                         <Route path="/login" component={Login}/>
                         <PrivateRoute path="/Question/:question_id" component={Question}/>
                         <PrivateRoute path="/Dashboard" component={Dashboard}/>
-                        <PrivateRoute path="/Unanswered" component={Unanswered}/>
-                        <PrivateRoute path="/Answered" component={Answered}/>
+                        <PrivateRoute path="/Dashboard/Unanswered" component={Unanswered}/>
+                        <PrivateRoute path="/Dashboard/Answered" component={Answered}/>
                         <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
                         <PrivateRoute path="/add" component={AddQuestion}/>
                         </div>

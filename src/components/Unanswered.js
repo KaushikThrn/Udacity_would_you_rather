@@ -9,9 +9,10 @@ class Unanswered extends Component {
     render(){
         return(
             <div>
+                <h3>Unanswered Questions</h3>
                 <ul>{
                     this.props.unAnswered.map((question)=>(<li key={question.id}>
-                      <Link to={{pathname:`/Question/${question.id}`,state:{answered:false}}}>
+                      <Link to={{pathname:`/Question/${question.id}`,state:{answered:true}}}>
                         {question.optionOne["text"]} or {question.optionTwo["text"]}
                         </Link>
                         </li>))

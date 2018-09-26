@@ -6,16 +6,16 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem ,Button} from 'reactstrap';
-  import {BrowserRouter as Router, Route, Link,NavLink} from 'react-router-dom'
+  import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
   import { connect } from 'react-redux'
   import {signOut} from "../actions/authedUser"
-import './styles/style.css'
 
-class Navigation extends React.Component {
+class DashboardNav extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,30 +30,19 @@ class Navigation extends React.Component {
     });
   }
 
-  signout=(event)=> {
-    event.preventDefault();
-    this.props.dispatch(signOut());
-
-  }
   render() {
     return (
       <div>
         <Navbar color="light" light expand="md">
-        {this.props.authedUser.length>0?<NavbarBrand> {this.props.user.name} Would You Rather</NavbarBrand>:<NavbarBrand>Would You Rather</NavbarBrand>}
+        <NavbarBrand> Dashboard</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-               <NavLink to="/Dashboard/Unanswered" activeClassName="activeLink">Dashboard</NavLink>
-              </NavItem>
-              <NavItem >
-               <NavLink to="/LeaderBoard" activeClassName="activeLink">LeaderBoard </NavLink>
-              </NavItem>
-              <NavItem >
-               <NavLink to="/add" activeClassName="activeLink">Add Question</NavLink>
+               <Link to="/Dashboard/Unanswered">Unanswered </Link>
               </NavItem>
               <NavItem>
-               <a href="#" onClick={this.signout}>Sign Out</a>
+               <Link to="/Dashboard/Answered">Answered </Link>
               </NavItem>
             </Nav>
           </Collapse>
@@ -70,4 +59,4 @@ function mapStateToProps({authedUser, users}) {
     }
 }
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(DashboardNav)

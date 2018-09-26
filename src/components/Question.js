@@ -10,9 +10,9 @@ class Question extends Component {
        {this.props.question==null?<div>Loading</div>:
               <div>
               <h2>Would You Rather</h2>
+              <span>{this.props.question.optionOne["text"]}</span> or <span>{this.props.question.optionTwo["text"]}</span>
               <div>Asked by {this.props.question.author}</div>
-              <img src={this.props.userImg} />
-             <span>{this.props.question.optionOne["text"]}</span> or <span>{this.props.question.optionTwo["text"]}</span>
+              <img src={this.props.userImg} style={{height:'100px',width:'100px'}}/>
              </div>}
              <Poll answered={this.props.location.state.answered} question_id={this.props.match.params.question_id} />
       </div>

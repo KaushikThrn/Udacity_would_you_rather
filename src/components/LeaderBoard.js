@@ -15,8 +15,8 @@ class LeaderBoard extends Component {
             <div>
                 {this.props.sortedUsers.map((user)=>(
                 <div key={user}>
-                <span>{this.props.users[user]["name"]}</span>
-                <img src={this.props.users[user].avatarURL} />
+                <img src={this.props.users[user].avatarURL} style={{height:'100px',width:'100px'}}/>
+                <span >{this.props.users[user]["name"]} </span>
                 <span>Asked:{this.props.users[user].questions.length} Answered:{Object.keys(this.props.users[user].answers).length}</span>
                 </div>
                

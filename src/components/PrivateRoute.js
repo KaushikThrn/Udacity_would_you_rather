@@ -8,7 +8,6 @@ import Protected from './Protected'
 
 const PrivateRoute = ({ component: Component,authed, ...rest }) => (
   <Route {...rest} render={(props) => {
-    console.log("wtf")
     return(
     authed.length>0
       ? <Component {...props} />

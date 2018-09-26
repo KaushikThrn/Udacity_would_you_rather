@@ -16,27 +16,17 @@ import {
 import {BrowserRouter as Router, Route, Link,Redirect} from 'react-router-dom'
 import DashboardNav from './DashboardNav'
 
-class Dashboard extends Component {
+class Nomatch extends Component {
 
     render(){
         return(
             <div>
-            <DashboardNav />
+            404 Page Not found.
             </div>
             )
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        users: Object.values(state.users).map((user) => {
-            return ({
-                id: user.id,
-                name: user.name
-            })
-        }),
-        username: state.authedUser
-    }
-}
 
-export default connect(mapStateToProps)(Dashboard)
+
+export default Nomatch

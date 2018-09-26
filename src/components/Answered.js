@@ -9,6 +9,7 @@ class Answered extends Component {
     render(){
         return(
             <div>
+                <h3>Answered Questions</h3>
                 <ul>{
                 this.props.answered.map((question)=>(<li key={question.id}>
                         <Link to={{pathname:`/Question/${question.id}`,state:{answered:true}}}>
@@ -26,6 +27,7 @@ class Answered extends Component {
 function mapStateToProps({questions,authedUser}) {
     const answered = Object.values(questions).filter((question)=>(
          question.optionOne.votes.includes(authedUser[0]) || question.optionTwo.votes.includes(authedUser[0])))
+
    
     return {
         answered,
