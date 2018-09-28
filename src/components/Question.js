@@ -14,7 +14,7 @@ class Question extends Component {
               <div>Asked by {this.props.question.author}</div>
               <img src={this.props.userImg} style={{height:'100px',width:'100px'}}/>
              </div>}
-             <Poll answered={this.props.location.state.answered} question_id={this.props.match.params.question_id} />
+             <Poll question_id={this.props.match.params.question_id} />
       </div>
     );
   }
