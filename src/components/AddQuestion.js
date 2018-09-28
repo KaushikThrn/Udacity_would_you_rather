@@ -29,7 +29,7 @@ class AddQuestion extends Component {
 
    render(){
 	   	if (this.state.redirect) {
-	            return <Redirect to='/Unanswered'/>
+	            return <Redirect to='/Dashboard/Unanswered'/>
 	        }
         return(
         <div style={{margin:'5px'}}>
