@@ -35,17 +35,17 @@ class AddQuestion extends Component {
         <div style={{margin:'5px'}}>
         <h2>Would You Rather</h2>
         <form onSubmit={this.handleSubmit}>
-        <div>
-        <label >Option One
-        <input style={{margin:'2px'}} type="text" value={this.state.optionOne} onChange={(event)=>{this.updateState("optionOne",event.target.value)}}/>
-        </label>
-        </div>
-        <div>
-         <label>Option Two
-        <input style={{margin:'2px'}} type="text" value={this.state.optionTwo} onChange={(event)=>{this.updateState("optionTwo",event.target.value)}}/>
-        </label>
-        </div>
-        <input type="submit" value="Submit" />
+            <div>
+                <label >Option One
+                <input style={{margin:'2px'}} type="text" value={this.state.optionOne} onChange={(event)=>{this.updateState("optionOne",event.target.value)}}/>
+                </label>
+                </div>
+                <div>
+                <label>Option Two
+                <input style={{margin:'2px'}} type="text" value={this.state.optionTwo} onChange={(event)=>{this.updateState("optionTwo",event.target.value)}}/>
+                </label>
+            </div>
+            <input type="submit" value="Submit" />
       </form>
       </div>
             )
