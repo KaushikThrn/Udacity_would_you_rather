@@ -3,12 +3,14 @@ import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label} from 'reactstrap'
 import {authenticateUser} from "../actions/authedUser"
 import {Link, Redirect} from 'react-router-dom'
+import DashboardNav from './DashboardNav'
 
 class Unanswered extends Component {
    
     render(){
         return(
             <div>
+                <DashboardNav />
                 <h3>Unanswered Questions</h3>
                 <ul>{
                     this.props.unAnswered.map((question)=>(<li key={question.id}>

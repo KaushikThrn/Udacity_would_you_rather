@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link,Switch} from 'react-router-dom'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
@@ -28,12 +28,13 @@ componentDidMount() {
                      <div>
                      <Navigation />
                         <Route path="/login" component={Login}/>
-                        <PrivateRoute path="/Question/:question_id" component={Question}/>
-                        <PrivateRoute path="/Dashboard" component={Dashboard}/>
-                        <PrivateRoute path="/Dashboard/Unanswered" component={Unanswered}/>
-                        <PrivateRoute path="/Dashboard/Answered" component={Answered}/>
-                        <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
-                        <PrivateRoute path="/add" component={AddQuestion}/>
+                        <Switch>
+                          <PrivateRoute path="/Question/:question_id" component={Question}/>
+                          <PrivateRoute path="/Dashboard/Unanswered" component={Unanswered}/>
+                          <PrivateRoute path="/Dashboard/Answered" component={Answered}/>
+                          <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
+                          <PrivateRoute path="/add" component={AddQuestion}/>
+                        </Switch>
                         </div>
             </Router>
         );

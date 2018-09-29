@@ -7,9 +7,9 @@ export function authenticateUser(id) {
     }
 }
 
-export function signOut(id) {
+export function signOut() {
     return {
-        type: SIGN_OUT,
-        id
+        type: SIGN_OUT
+        
     }
 }

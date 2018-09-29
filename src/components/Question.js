@@ -12,7 +12,7 @@ class Question extends Component {
               <h2>Would You Rather</h2>
               <span>{this.props.question.optionOne["text"]}</span> or <span>{this.props.question.optionTwo["text"]}</span>
               <div>Asked by {this.props.question.author}</div>
-              <img src={this.props.userImg} style={{height:'100px',width:'100px'}}/>
+              <img src={this.props.userImg} alt="profile" style={{height:'100px',width:'100px'}}/>
              </div>}
              <Poll question_id={this.props.match.params.question_id} />
       </div>

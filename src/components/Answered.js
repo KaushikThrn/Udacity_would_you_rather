@@ -3,16 +3,18 @@ import {connect} from 'react-redux'
 import {Button, Form, FormGroup, Label} from 'reactstrap'
 import {authenticateUser} from "../actions/authedUser"
 import {Link, Redirect} from 'react-router-dom'
+import DashboardNav from './DashboardNav'
 
 class Answered extends Component {
 
     render(){
         return(
             <div>
+                <DashboardNav />
                 <h3>Answered Questions</h3>
                 <ul>{
                 this.props.answered.map((question)=>(<li key={question.id}>
-                        <Link to={{pathname:`/Question/${question.id}`}}>
+                        <Link to={{pathname:`/Question/${question.id}`,state:{a:"s"}}}>
                         {question.optionOne["text"]} or {question.optionTwo["text"]}
                         </Link>
                         </li>))

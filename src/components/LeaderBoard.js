@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Button, Form, FormGroup, Label} from 'reactstrap'
 import {authenticateUser} from "../actions/authedUser"
 import {Link, Redirect} from 'react-router-dom'
 
@@ -15,7 +14,7 @@ class LeaderBoard extends Component {
             <div>
                 {this.props.sortedUsers.map((user)=>(
                 <div key={user}>
-                <img src={this.props.users[user].avatarURL} style={{height:'100px',width:'100px'}}/>
+                <img src={this.props.users[user].avatarURL} alt="profile" style={{height:'100px',width:'100px'}}/>
                 <span >{this.props.users[user]["name"]} </span>
                 <span>Asked:{this.props.users[user].questions.length} Answered:{Object.keys(this.props.users[user].answers).length}</span>
                 </div>

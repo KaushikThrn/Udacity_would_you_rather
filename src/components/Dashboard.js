@@ -19,6 +19,7 @@ import DashboardNav from './DashboardNav'
 class Dashboard extends Component {
 
     render(){
+      console.log("dashboard",this.props)
         return(
             <div>
             <DashboardNav />

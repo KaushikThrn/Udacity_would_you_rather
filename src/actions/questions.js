@@ -11,12 +11,6 @@ export function receiveQuestions(questions) {
 
 }
 
-export function addQuestion(question) {
-    return {
-        type: ADD_QUESTION,
-        question
-    }
-}
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
     return (dispatch, getState) => {

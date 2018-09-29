@@ -31,7 +31,6 @@ class Login extends Component {
   
 
     render(){
-
         if (this.state.redirect) {
             return <Redirect to='/Dashboard/Unanswered'/>
         }
@@ -65,8 +64,7 @@ function mapStateToProps(state) {
                 id: user.id,
                 name: user.name
             })
-        }),
-        username: state.authedUser
+        })
     }
 }
 
