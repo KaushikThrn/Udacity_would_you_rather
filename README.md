@@ -6,7 +6,6 @@ asked and answered.
 
 ## Installation
 Clone the repository, install and start
-
-`git clone https://github.com/gabyquiles/wouldYouRather`  
+ 
 `npm install`  
 `npm start` 
