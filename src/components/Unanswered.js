@@ -8,6 +8,7 @@ import DashboardNav from './DashboardNav'
 class Unanswered extends Component {
    
     render(){
+        console.log("unAnswered",this.props)
         return(
             <div>
                 <DashboardNav />
@@ -26,9 +27,13 @@ class Unanswered extends Component {
 }
 
 function mapStateToProps({questions,authedUser}) {
-    const unAnswered = Object.values(questions).filter((question)=>(
+    let unAnswered = Object.values(questions).filter((question)=>(
          !question.optionOne.votes.includes(authedUser[0]) && !question.optionTwo.votes.includes(authedUser[0])))
-   
+    unAnswered=unAnswered.sort((a,b)=>{
+        if(a.timestamp<b.timestamp) return 1
+        else if(a.timestamp>b.timestamp) return -1
+        else return 0
+    })
     return {
         unAnswered,
         user:authedUser[0]
