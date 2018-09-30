@@ -27,13 +27,16 @@ componentDidMount() {
             <Router>
                      <div>
                      <Navigation />
-                        <Route path="/login" component={Login}/>
                         <Switch>
+                          <Route path="/login" component={Login}/>
                           <PrivateRoute path="/Question/:question_id" component={Question}/>
                           <PrivateRoute path="/Dashboard/Unanswered" component={Unanswered}/>
                           <PrivateRoute path="/Dashboard/Answered" component={Answered}/>
                           <PrivateRoute path="/LeaderBoard" component={LeaderBoard}/>
                           <PrivateRoute path="/add" component={AddQuestion}/>
+                          <PrivateRoute exact path="/" component={Unanswered}/>
+                          <PrivateRoute path="/Nomatch" component={Nomatch} />
+                          <PrivateRoute component={Nomatch} />
                         </Switch>
                         </div>
             </Router>

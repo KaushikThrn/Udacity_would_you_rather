@@ -31,8 +31,13 @@ class Login extends Component {
   
 
     render(){
+      
+        let {from} = this.props.location.state || '/Dashboard/Unanswered'
+        if(from==='/login'){
+          from='/Dashboard/Unanswered'
+        }
         if (this.state.redirect) {
-            return <Redirect to='/Dashboard/Unanswered'/>
+            return <Redirect to={from}/>
         }
 
         return(

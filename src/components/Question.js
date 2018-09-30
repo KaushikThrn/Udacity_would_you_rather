@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link,Redirect} from 'react-router-dom'
 import Poll from './Poll'
 
 class Question extends Component {
   render() {
+    if(this.props.redirect===true){
+      return <Redirect to="/Nomatch"/>
+    }
     return (
       <div>
        {this.props.question==null?<div>Loading</div>:
@@ -21,10 +24,21 @@ class Question extends Component {
 }
 
 function mapStateToProps (state,props) {
-  return {
+  let redirect=false
+  try{
+    return {
     question: state.questions[props.match.params.question_id],
     userImg:state.users[state.questions[props.match.params.question_id]["author"]]["avatarURL"]
+    }
   }
-}
+  catch(err){
+    return{
+      redirect:true
+    }
+    
+  }
+
+  }
+
 
 export default connect(mapStateToProps)(Question)
